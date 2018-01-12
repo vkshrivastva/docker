@@ -1,0 +1,78 @@
+version: "3.2"
+services:
+    apache:
+        build: ./apache/
+        ports:
+            - 80:80
+        volumes:
+            - ./src/:/usr/local/apache2/htdocs/:ro
+        networks:
+            - server
+        depends_on:
+            - php
+  
+      
+    php:
+        build: ./php/
+        expose:
+            - 9000
+        networks:
+            - server
+        volumes:
+            - ./src/:/usr/local/apache2/htdocs/
+        
+networks:
+    server:
+
+#            
+#            
+#            
+#        volumes:
+#            - "${PROJECT_ROOT}:/var/www/html:ro"
+#        networks:
+#            - server
+#        depends_on:
+#            - php
+#
+#    php:
+#        build: ./php/
+#        expose:
+#            - 9000
+#        volumes:
+#            - "${PROJECT_ROOT}:/var/www/html"
+#        networks:
+#            - database
+#            - server
+#            
+#        depends_on:
+#            - mysql
+#
+#    mysql:
+#        image: mysql:latest
+#        volumes:
+#            - data:/var/lib/mysql
+#        networks:
+#            - database
+#        environment:
+#            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+#            MYSQL_DATABASE: "${DB_NAME}"
+#            MYSQL_USER: "${DB_USERNAME}"
+#            MYSQL_PASSWORD: "${DB_PASSWORD}"
+#
+#    phpmyadmin:
+#        image: phpmyadmin/phpmyadmin
+#        ports:
+#            - 8080:80
+#        networks:
+#            - database
+#        depends_on:
+#            - mysql
+#        environment:
+#            PMA_HOST: mysql
+#
+#volumes:
+#    data:
+#        
+#networks:
+#    database:
+#    server:
