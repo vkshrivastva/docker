@@ -1,0 +1,9 @@
+version: "3.2"
+
+services:
+    lamp:
+        build: ./
+        ports:
+            - 80:80
+        volumes:
+            - "${PROJECT_ROOT}:/var/www/html"
