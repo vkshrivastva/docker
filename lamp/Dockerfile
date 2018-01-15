@@ -28,8 +28,6 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 RUN cd /var/www/html
 
-ENV USERNAME vkshrivastva
-ENV PASSWORD Welcomeinsvam1
 
 #RUN rm -rf *
 RUN git clone -bdev http://${USERNAME}:${PASSWORD}@nst-tfs2015:8080/tfs/NST_IAP_IPAN/NST_IAP_IPAN/_git/NST_IAP_IPAN_Web_Portal ./src
